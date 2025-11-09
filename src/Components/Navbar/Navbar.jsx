@@ -26,7 +26,7 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-lightBg rounded-box mt-3 z-1 w-52 p-2 shadow font-body text-textMain"
+            className="menu menu-sm bg-accent dropdown-content rounded-box mt-3 z-1 w-52 p-2 shadow font-body text-textMain"
           >
             <li>
               <NavLink to="/">Home</NavLink>
@@ -35,10 +35,10 @@ const Navbar = () => {
               <NavLink to="/add-habit">Add Habit</NavLink>
             </li>
             <li>
-              <NavLink to="/my-habits">My Habits</NavLink>
+              <NavLink to="/my-habit">My Habits</NavLink>
             </li>
             <li>
-              <NavLink to="/browse">Browse Public Habits</NavLink>
+              <NavLink to="/public-habit">Browse Public Habits</NavLink>
             </li>
           </ul>
         </div>
@@ -48,25 +48,25 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-2 font-body text-textMain">
           <li>
-            <NavLink
-              to=""
-              className="py-2 px-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-medium"
-            >
+            <NavLink to="/" className="hover:text-primary transition">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="" className="hover:text-primary transition">
+            <NavLink to="/add-habit" className="hover:text-primary transition">
               Add Habit
             </NavLink>
           </li>
           <li>
-            <NavLink to="" className="hover:text-primary transition">
+            <NavLink to="/my-habit" className="hover:text-primary transition">
               My Habits
             </NavLink>
           </li>
           <li>
-            <NavLink to="" className="hover:text-primary transition">
+            <NavLink
+              to="/public-habit"
+              className="hover:text-primary transition"
+            >
               Browse Public Habits
             </NavLink>
           </li>

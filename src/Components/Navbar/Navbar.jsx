@@ -1,6 +1,6 @@
 import React from "react";
 import habitLogo from "../../assets/Habit-rise.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -74,9 +74,12 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end flex items-center gap-3">
-        <a className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition">
+        <Link
+          to="/auth/login"
+          className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
+        >
           Sign In / Register
-        </a>
+        </Link>
       </div>
     </div>
   );

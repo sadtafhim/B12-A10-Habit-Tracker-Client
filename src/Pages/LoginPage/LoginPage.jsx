@@ -3,9 +3,9 @@ import { Link } from "react-router";
 
 const LoginPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--color-lightBg)]">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold text-center text-[var(--color-primary)]">
+        <h2 className="text-2xl font-bold text-center text-(--color-primary)">
           Welcome Back to Our Site
         </h2>
         <p className="text-center text-gray-500">
@@ -14,31 +14,25 @@ const LoginPage = () => {
 
         <form className="space-y-4">
           <div className="form-control">
-            <label
-              htmlFor="email"
-              className="label text-[var(--color-primary)]"
-            >
+            <label htmlFor="email" className="label text-(--color-primary)">
               Email Address
             </label>
             <input
               type="email"
               id="email"
-              className="input input-bordered w-full p-3 text-[var(--color-secondary)]"
+              className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your email"
             />
           </div>
 
           <div className="form-control">
-            <label
-              htmlFor="password"
-              className="label text-[var(--color-primary)]"
-            >
+            <label htmlFor="password" className="label text-(--color-primary)">
               Password
             </label>
             <input
               type="password"
               id="password"
-              className="input input-bordered w-full p-3 text-[var(--color-secondary)]"
+              className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your password"
             />
           </div>
@@ -65,11 +59,9 @@ const LoginPage = () => {
           </button>
         </div>
 
-        <Link to="/auth/register" className="mt-4">
-          <span className="text-sm text-gray-500">
-            Don't have an account?
-            <p className="text-[var(--color-accent)]">Register here</p>
-          </span>
+        <Link to="/auth/register" className="mt-4 block text-center">
+          <span className="text-sm text-gray-500">Don't have an account?</span>
+          <p className="text-(--color-accent)">Register here</p>
         </Link>
       </div>
     </div>

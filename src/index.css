@@ -18,7 +18,10 @@
   --color-lightBg: #f8f9fc;
   --color-lightBg: #1d1d1f;
 }
-
+:root {
+  --font-heading: "Inter", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
+}
 .active {
   padding: 0.5rem 1rem;
   border-radius: 9999px;
@@ -29,8 +32,4 @@
   );
   color: #ffffff;
   font-weight: 500;
-}
-:root {
-  --font-heading: "Inter", sans-serif;
-  --font-body: "Source Sans 3", sans-serif;
 }

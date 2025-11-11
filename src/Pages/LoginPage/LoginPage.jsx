@@ -1,9 +1,24 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const LoginPage = () => {
+  const { user, setUser, signIn } = use(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signIn(email, password)
+      .then((result) => {
+        const user1 = result.user;
+        setUser(user1);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen py-20 bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md">
         <h2 className="text-2xl font-bold text-center text-(--color-primary)">
           Welcome Back to Our Site
@@ -12,7 +27,7 @@ const LoginPage = () => {
           Sign in to access your account
         </p>
 
-        <form className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div className="form-control">
             <label htmlFor="email" className="label text-(--color-primary)">
               Email Address
@@ -20,6 +35,7 @@ const LoginPage = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your email"
             />
@@ -32,6 +48,7 @@ const LoginPage = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your password"
             />

@@ -1,35 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaClipboardList,
-  FaCheckCircle,
-  FaUsers,
-  FaChartLine,
-} from "react-icons/fa";
+import { FaBrain, FaSmileBeam, FaHeartbeat, FaChartLine } from "react-icons/fa";
 
 const features = [
   {
-    icon: <FaClipboardList />,
-    title: "Easy Habit Management",
-    text: "Create, schedule and track habits with simple controls designed for daily use.",
+    icon: <FaBrain />,
+    title: "Better Focus & Productivity",
+    text: "Regular habits train your mind to stay on task, helping you accomplish goals more efficiently.",
     color: "#2F4C7A",
   },
   {
-    icon: <FaCheckCircle />,
-    title: "Track Progress & Streaks",
-    text: "Stay motivated with streak indicators and visual progress history.",
+    icon: <FaSmileBeam />,
+    title: "Reduced Stress",
+    text: "Structured routines bring balance and reduce decision fatigue, leading to a calmer, more relaxed day.",
     color: "#FF785A",
   },
   {
-    icon: <FaChartLine />,
-    title: "Insights & Analytics",
-    text: "View your completion trends and reflect on your consistency.",
+    icon: <FaHeartbeat />,
+    title: "Improved Health",
+    text: "Consistent wellness habits—like exercise, sleep, and nutrition—create lasting positive impacts.",
     color: "#2F4C7A",
   },
   {
-    icon: <FaUsers />,
-    title: "Community & Sharing",
-    text: "Browse and share public habits that inspire personal growth.",
+    icon: <FaChartLine />,
+    title: "Long-Term Growth",
+    text: "Small daily actions compound over time, leading to meaningful personal and professional development.",
     color: "#FF785A",
   },
 ];
@@ -56,7 +51,7 @@ const WhyJoinUs = () => {
         style={{ background: "#2F4C7A" }}
       >
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center">
-          Why Join HabitRise
+          Why Build Habits?
         </h1>
       </div>
 
@@ -66,9 +61,9 @@ const WhyJoinUs = () => {
             className="max-w-2xl mx-auto mb-14 text-lg leading-relaxed"
             style={{ color: "#1D1D1F", opacity: 0.85 }}
           >
-            HabitRise helps you build consistent routines, track growth, and
-            stay motivated with clarity and purpose — all in one smooth,
-            distraction-free platform.
+            Building consistent habits lays the foundation for a balanced,
+            fulfilling life — boosting focus, reducing stress, and helping you
+            grow steadily toward your best self.
           </p>
 
           <div className="flex flex-col gap-8 max-w-3xl mx-auto">

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { use } from "react";
 import habitLogo from "../../assets/Habit-rise.png";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = use(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(alert("Logout Successful"))
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   return (
     <div className="navbar px-6 bg-lightBg shadow-sm border-b border-secondary/30">
       <div className="navbar-start flex items-center gap-2">
@@ -74,12 +83,23 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end flex items-center gap-3">
-        <Link
-          to="/auth/login"
-          className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
-        >
-          Sign In / Register
-        </Link>
+        {user ? (
+          <button
+            onClick={() => {
+              handleLogout();
+            }}
+            className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link
+            to="/auth/login"
+            className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
+          >
+            Sign In / Register
+          </Link>
+        )}
       </div>
     </div>
   );

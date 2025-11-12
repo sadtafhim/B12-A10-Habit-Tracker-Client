@@ -8,6 +8,7 @@ import PublicHabit from "../Pages/PublicHabit/PublicHabit";
 import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +25,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-habit",
-        element: <AddHabit></AddHabit>,
+        element: (
+          <PrivateRoute>
+            <AddHabit></AddHabit>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-habit",
-        element: <MyHabit></MyHabit>,
+        element: (
+          <PrivateRoute>
+            <MyHabit></MyHabit>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/public-habit",

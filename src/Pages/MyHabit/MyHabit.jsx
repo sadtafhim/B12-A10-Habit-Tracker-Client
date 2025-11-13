@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router";
 
 const MyHabit = () => {
   const { user } = use(AuthContext);
@@ -62,9 +63,12 @@ const MyHabit = () => {
             </div>
 
             <div className="flex gap-2 mt-4 md:mt-0">
-              <button className="px-3 py-1 rounded-full bg-linear-to-r from-(--color-primary) to-(--color-accent) text-white font-semibold hover:opacity-90 transition">
+              <Link
+                to={`/update-details/${habit._id}`}
+                className="btn px-3 py-1 rounded-full bg-linear-to-r from-(--color-primary) to-(--color-accent) text-white font-semibold hover:opacity-90 transition"
+              >
                 Update
-              </button>
+              </Link>
               <button className="px-3 py-1 rounded-full bg-red-500 text-white font-semibold hover:opacity-90 transition">
                 Delete
               </button>

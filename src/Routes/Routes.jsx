@@ -11,6 +11,7 @@ import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import PrivateRoute from "../Provider/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
 import HabitDetails from "../HabitDetails/HabitDetails";
+import UpdateHabit from "../Pages/UpdateHabit/UpdateHabit";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <HabitDetails></HabitDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-details/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateHabit></UpdateHabit>
           </PrivateRoute>
         ),
       },

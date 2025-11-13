@@ -3,21 +3,27 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const RegisterPage = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, updateUser } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const password = e.target.password.value;
-    const photoURL = e.target.photoURL.value;
+    const photo = e.target.photoURL.value;
     const email = e.target.email.value;
     createUser(email, password)
       .then((result) => {
-        // Signed up
-        const user1 = result.user;
-        setUser(user1);
-        navigate(`${location.state ? location.state : "/"}`);
+        const user = result.user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+          })
+          .catch((error) => {
+            alert(error.message);
+            setUser(user);
+          });
+        navigate("/");
       })
       .catch((error) => {
         alert(error.message);

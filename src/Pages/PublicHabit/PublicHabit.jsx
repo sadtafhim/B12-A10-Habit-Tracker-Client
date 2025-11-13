@@ -4,7 +4,7 @@ const PublicHabit = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/habits")
+    fetch("http://localhost:5000/habits")
       .then((res) => res.json())
       .then((data2) => setData(data2))
       .catch((err) => console.error("Error fetching habits:", err));

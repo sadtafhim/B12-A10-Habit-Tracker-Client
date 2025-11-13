@@ -1,13 +1,14 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { toast } from "react-hot-toast";
-import { Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const RegisterPage = () => {
   const { createUser, setUser, updateUser, googleLoginHandle } =
     use(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
@@ -16,12 +17,13 @@ const RegisterPage = () => {
       navigate(from, { replace: true });
     });
   };
+
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    const password = e.target.password.value;
-    const photo = e.target.photoURL.value;
     const email = e.target.email.value;
+    const photo = e.target.photoURL.value;
+    const password = e.target.password.value;
 
     if (name.length < 5) {
       toast.error("Name should be at least 5 characters long");
@@ -43,116 +45,133 @@ const RegisterPage = () => {
       .then((result) => {
         const user = result.user;
         updateUser({ displayName: name, photoURL: photo })
-          .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo });
-          })
+          .then(() => setUser({ ...user, displayName: name, photoURL: photo }))
           .catch((error) => {
             toast.error(error.message);
             setUser(user);
           });
-        navigate("/");
+        navigate(from, { replace: true });
+        toast.success("Account created successfully!");
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 py-20">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold text-center text-(--color-primary)">
-          Create an Account
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md border border-gray-200">
+        <h2 className="text-3xl font-bold text-center text-(--color-primary)">
+          Create Your HabitRise Account
         </h2>
         <p className="text-center text-gray-500">
-          Sign up to access your account
+          Sign up to start tracking your habits and progress.
         </p>
-        <form onSubmit={handleRegistration} className="space-y-4">
+
+        <form onSubmit={handleRegistration} className="space-y-5">
           <div className="form-control">
-            <label htmlFor="name" className="label text-(--color-primary)">
+            <label
+              htmlFor="name"
+              className="label font-medium text-(--color-primary)"
+            >
               Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              className="input input-bordered w-full p-3 text-(--color-primary)"
-              placeholder="Enter your Name"
+              placeholder="Enter your name"
               required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
-            <label htmlFor="email" className="label text-(--color-primary)">
+            <label
+              htmlFor="email"
+              className="label font-medium text-(--color-primary)"
+            >
               Email Address
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your email"
               required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
-            <label htmlFor="photoURL" className="label text-(--color-primary)">
-              PhotoURL
+            <label
+              htmlFor="photoURL"
+              className="label font-medium text-(--color-primary)"
+            >
+              Photo URL
             </label>
             <input
               type="text"
               id="photoURL"
               name="photoURL"
-              className="input input-bordered w-full p-3 text-(--color-primary)"
-              placeholder="Enter your Photo URL"
+              placeholder="Enter your photo URL"
               required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
-            <label htmlFor="password" className="label text-(--color-primary)">
+            <label
+              htmlFor="password"
+              className="label font-medium text-(--color-primary)"
+            >
               Password
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="input input-bordered w-full p-3 text-(--color-primary)"
               placeholder="Enter your password"
               required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <button
             type="submit"
-            className="btn btn-primary w-full py-2 text-white"
+            className="w-full py-3 rounded-full text-white font-semibold bg-linear-to-r from-(--color-primary) to-(--color-accent) hover:opacity-90 transition-all duration-300 shadow-md"
           >
             Register
           </button>
         </form>
 
-        <div className="text-center space-x-2">
-          <span className="text-gray-600">OR</span>
-          <button
-            onClick={() => {
-              googleLogin();
-            }}
-            className="btn btn-outline w-full py-2 mt-3"
-          >
-            <img
-              className="w-5 h-5 mr-2"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
-              alt="Google Logo"
-            />
-            Continue with Google
-          </button>
+        <div className="flex items-center gap-3 my-4">
+          <div className="grow h-px bg-gray-300"></div>
+          <span className="text-gray-500 text-sm">OR</span>
+          <div className="grow h-px bg-gray-300"></div>
         </div>
 
-        <Link to="/auth/login" className="mt-4 block text-center">
-          <span className="text-sm text-gray-500">
-            Already have an account?
+        <button
+          onClick={googleLogin}
+          className="w-full py-3 rounded-full border border-gray-300 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition-all"
+        >
+          <FcGoogle />
+          <span className="font-medium text-gray-600">
+            Continue with Google
           </span>
-          <p className="text-(--color-accent)">Sign In</p>
-        </Link>
+        </button>
+
+        <div className="text-center mt-4">
+          <p className="text-sm text-gray-600">
+            Already have an account?{" "}
+            <Link
+              to="/auth/login"
+              className="font-semibold text-(--color-accent) hover:underline"
+            >
+              Sign In
+            </Link>
+          </p>
+        </div>
       </div>
       <Toaster />
     </div>

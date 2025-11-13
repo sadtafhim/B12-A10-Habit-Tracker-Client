@@ -51,7 +51,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <img src={habitLogo} alt="HabitRise Logo" className="w-30" />
+        <Link to="/">
+          <img src={habitLogo} alt="HabitRise Logo" className="w-30" />
+        </Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">
@@ -113,17 +115,15 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-20 p-4 shadow bg-base-100 rounded-box w-60"
             >
-              <li className="text-sm">
-                <span className="font-semibold text-textMain">
-                  {user.displayName || "Anonymous User"}
-                </span>
+              <li className="text-sm font-semibold text-textMain">
+                {user.displayName || "Anonymous User"}
               </li>
               <li className="text-xs text-gray-500">{user.email}</li>
               <div className="divider my-1"></div>
               <li>
                 <button
                   onClick={handleLogout}
-                  className="text-left w-full py-2 px-3 rounded-full text-white font-semibold bg-linear-to-r from-primary to-accent hover:opacity-90 transition"
+                  className="flex justify-center items-center w-full py-2 px-3 rounded-full text-white font-semibold bg-linear-to-r from-primary to-accent hover:opacity-90 transition"
                 >
                   Log Out
                 </button>

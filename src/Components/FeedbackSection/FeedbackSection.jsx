@@ -11,13 +11,10 @@ const FeedbackSection = () => {
   };
 
   return (
-    <div>
-      <div
-        className="w-full h-24 flex items-center justify-center shadow-sm mt-20"
-        style={{ background: "#2F4C7A" }}
-      >
+    <div className=" bg-gray-100">
+      <div className="w-full h-24 flex items-center justify-center shadow-sm bg-[#2F4C7A]">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center">
-          Your Word Matters
+          Your Words Matter
         </h1>
       </div>
       <section className="flex items-center justify-center py-16 bg-gray-100 px-4">

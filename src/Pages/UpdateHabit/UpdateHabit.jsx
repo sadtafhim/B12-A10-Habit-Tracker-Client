@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-hot-toast";
+import Loader from "../../Components/Loader/Loader";
 
 const UpdateHabit = () => {
   const { id } = useParams();
@@ -21,7 +22,6 @@ const UpdateHabit = () => {
         setLoading(false);
       });
   }, [id]);
-  console.log(habit);
 
   const updateHabit = (e) => {
     e.preventDefault();
@@ -59,99 +59,102 @@ const UpdateHabit = () => {
     );
 
   return (
-    <div className="min-h-screen flex justify-center items-start py-12 bg-gray-100">
-      <form
-        onSubmit={updateHabit}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-2xl space-y-6"
-      >
-        <h2 className="text-2xl font-bold text-(--color-primary)">
+    <div className="py-10 bg-gray-100">
+      <div className="w-full h-24 flex items-center justify-center shadow-sm bg-[#2F4C7A] ">
+        <h1 className="text-3xl md:text-4xl font-bold text-white text-center">
           Update Habit
-        </h2>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            User Name
-          </label>
-          <input
-            name="name"
-            type="text"
-            readOnly
-            defaultValue={habit.creatorName}
-            disabled
-            className="w-full border border-gray-300 rounded-md p-2 mt-1 bg-gray-100"
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            readOnly
-            defaultValue={habit.creatorEmail}
-            disabled
-            className="w-full border border-gray-300 rounded-md p-2 mt-1 bg-gray-100"
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            Title
-          </label>
-          <input
-            type="text"
-            name="habitName"
-            defaultValue={habit.habitTitle}
-            className="w-full border border-gray-300 rounded-md p-2 mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            Description
-          </label>
-          <textarea
-            name="description"
-            defaultValue={habit.description}
-            className="w-full border border-gray-300 rounded-md p-2 mt-1"
-            rows={4}
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            Category
-          </label>
-          <input
-            type="text"
-            name="category"
-            defaultValue={habit.category}
-            className="w-full border border-gray-300 rounded-md p-2 mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold text-(--color-primary)">
-            Image
-          </label>
-          <input type="text" className="w-full mt-1" />
-          <input
-            type="text"
-            name="image"
-            defaultValue={habit.uploadedImage}
-            className="w-full border border-gray-300 rounded-md p-2 mt-1"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full py-2.5 bg-linear-to-r from-(--color-primary) to-(--color-accent) text-white font-semibold rounded-full hover:opacity-90 transition"
+        </h1>
+      </div>
+      <div className="min-h-screen flex justify-center items-start py-12 bg-gray-100">
+        <form
+          onSubmit={updateHabit}
+          className="bg-white p-8 rounded-xl shadow-md w-full max-w-2xl space-y-6"
         >
-          Update Habit
-        </button>
-      </form>
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              User Name
+            </label>
+            <input
+              name="name"
+              type="text"
+              readOnly
+              defaultValue={habit.creatorName}
+              disabled
+              className="w-full border border-gray-300 rounded-md p-2 mt-1 bg-gray-100"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              readOnly
+              defaultValue={habit.creatorEmail}
+              disabled
+              className="w-full border border-gray-300 rounded-md p-2 mt-1 bg-gray-100"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              Title
+            </label>
+            <input
+              type="text"
+              name="habitName"
+              defaultValue={habit.habitTitle}
+              className="w-full border border-gray-300 rounded-md p-2 mt-1"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              Description
+            </label>
+            <textarea
+              name="description"
+              defaultValue={habit.description}
+              className="w-full border border-gray-300 rounded-md p-2 mt-1"
+              rows={4}
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              Category
+            </label>
+            <input
+              type="text"
+              name="category"
+              defaultValue={habit.category}
+              className="w-full border border-gray-300 rounded-md p-2 mt-1"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-(--color-primary)">
+              Image
+            </label>
+            <input type="text" className="w-full mt-1" />
+            <input
+              type="text"
+              name="image"
+              defaultValue={habit.uploadedImage}
+              className="w-full border border-gray-300 rounded-md p-2 mt-1"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2.5 bg-linear-to-r from-(--color-primary) to-(--color-accent) text-white font-semibold rounded-full hover:opacity-90 transition"
+          >
+            Update Habit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -116,7 +116,7 @@ const Slider = () => {
                         className="mt-6"
                       >
                         <Link
-                          to="/explore-habits"
+                          to="/public-habit"
                           className="inline-flex items-center gap-2 py-3 px-6 rounded-full border border-white text-white hover:bg-white hover:text-primary transition-all duration-300 font-medium"
                         >
                           Explore Habits

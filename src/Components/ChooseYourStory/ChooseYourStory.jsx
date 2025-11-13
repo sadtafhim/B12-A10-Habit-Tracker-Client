@@ -1,11 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import cycle from "../../assets/Cycle.png";
+import { Link } from "react-router";
 
 const ChooseYourStory = () => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Trigger the animation only once when it comes into view
-    threshold: 0.5, // Trigger when 50% of the section is in the viewport
+    triggerOnce: true,
+    threshold: 0.5,
   });
 
   return (
@@ -14,7 +16,6 @@ const ChooseYourStory = () => {
       className="relative bg-gradient-to-r from-primary to-secondary text-lightBg py-16 px-8"
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        {/* Left Text */}
         <motion.div
           className="text-left md:w-1/2"
           initial={{ x: -100, opacity: 0 }}
@@ -31,23 +32,21 @@ const ChooseYourStory = () => {
             Turn small steps into lasting change through daily tracking and
             mindful improvement.
           </p>
-          <button className="bg-gradient-to-r from-primary to-accent text-white py-3 px-6 rounded-full border border-white hover:bg-white hover:text-primary transition-all duration-300 font-medium">
+          <Link
+            to="/public-habit"
+            className="bg-gradient-to-r from-primary to-accent text-white py-3 px-6 rounded-full border border-white hover:bg-white hover:text-primary transition-all duration-300 font-medium"
+          >
             Explore Habits
-          </button>
+          </Link>
         </motion.div>
 
-        {/* Right Image */}
         <motion.div
-          className="md:w-1/2 mt-8 md:mt-0"
+          className="h-full md:w-1/2 mt-8 md:mt-0"
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: inView ? 0 : 100, opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.8 }}
         >
-          <img
-            src="https://via.placeholder.com/400x400.png?text=Your+Habit+Image" // Replace with your own image
-            alt="Rise, Track & Improve"
-            className="rounded-lg shadow-lg"
-          />
+          <img src={cycle} alt="Rise, Track & Improve" />
         </motion.div>
       </div>
     </section>

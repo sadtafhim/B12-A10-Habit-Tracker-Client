@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
-
+import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
   const { user, setUser, signIn, googleLoginHandle } = use(AuthContext);
   const location = useLocation();
@@ -98,11 +98,7 @@ const LoginPage = () => {
           }}
           className="w-full py-3 rounded-full border border-gray-300 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition-all"
         >
-          <img
-            className="w-5 h-5"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
-            alt="Google Logo"
-          />
+          <FcGoogle />
           <span className="font-medium text-gray-600">
             Continue with Google
           </span>

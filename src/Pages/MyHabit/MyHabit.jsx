@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router";
+import Loader from "../../Components/Loader/Loader";
 
 const MyHabit = () => {
   const { user } = use(AuthContext);
@@ -22,7 +23,12 @@ const MyHabit = () => {
     }
   }, [user?.email]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
 
   return (
     <section className="min-h-screen bg-gray-100 px-4 py-12">

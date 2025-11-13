@@ -2,14 +2,15 @@ import React, { use } from "react";
 import habitLogo from "../../assets/Habit-rise.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
 
   const handleLogout = () => {
     logOut()
-      .then(() => alert("Logout Successful"))
-      .catch((error) => alert(error.message));
+      .then(() => toast.success("Loged Out Successfully!"))
+      .catch((error) => toast.error(error.message));
   };
 
   return (

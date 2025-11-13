@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const RegisterPage = () => {
   const { createUser, setUser, updateUser } = use(AuthContext);
@@ -19,7 +20,7 @@ const RegisterPage = () => {
             setUser({ ...user, displayName: name, photoURL: photo });
           })
           .catch((error) => {
-            alert(error.message);
+            toast.error(error.message);
             setUser(user);
           });
         navigate("/");

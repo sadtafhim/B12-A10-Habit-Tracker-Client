@@ -1,5 +1,6 @@
 import React, { use } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const AddHabit = () => {
   const { user } = use(AuthContext);
@@ -26,10 +27,10 @@ const AddHabit = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        toast.success("Habit Updated Successfully!");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
   return (

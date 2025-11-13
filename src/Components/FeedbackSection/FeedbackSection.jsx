@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const FeedbackSection = () => {
   const [feedback, setFeedback] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Thank you for your feedback!");
+    toast.success("Thank You For Your Valuable Feedback");
     setFeedback("");
   };
 

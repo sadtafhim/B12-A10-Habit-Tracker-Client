@@ -10,8 +10,17 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <RotateLoader color="#22c55e" size={15} />
+      <div className="flex flex-col justify-center items-center min-h-screen bg-lightBg">
+        <RotateLoader
+          color="var(--color-primary)"
+          loading={loading}
+          size={12}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+        <p className="mt-4 text-primary font-semibold text-lg tracking-wide">
+          Loading
+        </p>
       </div>
     );
   }

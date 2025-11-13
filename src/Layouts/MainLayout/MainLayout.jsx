@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 import { Outlet } from "react-router";
 
 const MainLayout = () => {
@@ -15,6 +16,7 @@ const MainLayout = () => {
       <div>
         <Footer></Footer>
       </div>
+      <Toaster />
     </div>
   );
 };

@@ -5,12 +5,19 @@ const HabitDetails = () => {
   const { id } = useParams();
   const [habit, setHabit] = useState(null);
   const [completed, setCompleted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/habits/${id}`)
       .then((res) => res.json())
-      .then((data) => setHabit(data.result))
-      .catch((err) => console.error("Error fetching habit:", err));
+      .then((data) => {
+        setHabit(data.result);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching habit:", err);
+        setLoading(false);
+      });
   }, [id]);
 
   if (!habit) {
@@ -26,7 +33,12 @@ const HabitDetails = () => {
   const handleMarkComplete = () => {
     setCompleted(true);
   };
-
+  if (loading)
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6 font-(--font-body)">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">

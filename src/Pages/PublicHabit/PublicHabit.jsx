@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Loader from "../../Components/Loader/Loader";
 
 const PublicHabit = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/habits")
       .then((res) => res.json())
-      .then((data2) => setData(data2))
-      .catch((err) => console.error("Error fetching habits:", err));
+      .then((data2) => {
+        setData(data2);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching habits:", err), setLoading(false);
+      });
   }, []);
+
+  if (loading)
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-gray-100 py-16 px-6 font-(--font-body)">

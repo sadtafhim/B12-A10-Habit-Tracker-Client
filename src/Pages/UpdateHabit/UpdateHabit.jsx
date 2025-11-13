@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { toast } from "react-hot-toast";
 
 const UpdateHabit = () => {
   const { id } = useParams();
   console.log(id);
   const [habit, setHabit] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/habits/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setHabit(data.result);
+        setLoading(false);
+        toast.success("Habit Updated Successfully!");
       })
-      .catch((err) => console.error("Error fetching habit:", err));
+      .catch((err) => {
+        toast.error("Error fetching habit:", err);
+        setLoading(false);
+      });
   }, [id]);
   console.log(habit);
 
@@ -43,6 +50,13 @@ const UpdateHabit = () => {
         console.log(err);
       });
   };
+
+  if (loading)
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
 
   return (
     <div className="min-h-screen flex justify-center items-start py-12 bg-gray-100">

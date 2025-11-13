@@ -11,72 +11,68 @@ const PublicHabit = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--color-lightBg)] py-12 px-6 font-[var(--font-body)]">
-      <h2 className="text-3xl font-bold text-[var(--color-primary)] text-center mb-10 font-[var(--font-heading)]">
-        Public Habits
+    <div className="min-h-screen bg-gray-100 py-16 px-6 font-(--font-body)">
+      {/* Page Title */}
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-(--color-primary) mb-12 font-(--font-heading)">
+        Discover Public Habits
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {/* Habits Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch h-full">
         {data.map((habit) => (
           <div
             key={habit._id}
-            className="bg-white shadow-lg rounded-xl overflow-hidden border border-[var(--color-secondary)] hover:shadow-xl transition-shadow duration-300"
+            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-200"
           >
+            {/* Habit Image */}
             <div className="relative">
               <img
                 src={habit.uploadedImage}
                 alt={habit.habitTitle}
-                className="w-full h-48 object-cover"
+                className="w-full h-52 object-cover rounded-t-xl"
               />
-              <span className="absolute top-3 right-3 bg-[var(--color-accent)] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                NEW
-              </span>
             </div>
 
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-[var(--color-primary)] mb-2 font-[var(--font-heading)]">
+            {/* Habit Info */}
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-(--color-primary) mb-2 font-(--font-heading)">
                 {habit.habitTitle}
               </h3>
 
-              <p className="text-gray-600 text-sm mb-4">
-                {habit.description.length > 100
-                  ? habit.description.slice(0, 100) + "..."
-                  : habit.description}
-              </p>
-
               <div className="text-sm space-y-1 text-gray-700">
                 <p>
-                  <span className="font-medium text-[var(--color-primary)]">
+                  <span className="font-medium text-(--color-primary)">
                     Category:
                   </span>{" "}
                   {habit.category}
                 </p>
                 <p>
-                  <span className="font-medium text-[var(--color-primary)]">
+                  <span className="font-medium text-(--color-primary)">
                     Reminder:
                   </span>{" "}
                   {habit.reminderTime}
                 </p>
                 <p>
-                  <span className="font-medium text-[var(--color-primary)]">
+                  <span className="font-medium text-(--color-primary)">
                     Creator:
                   </span>{" "}
                   {habit.creatorName}
                 </p>
               </div>
 
-              <div className="mt-5 text-center">
-                <button className="bg-[var(--color-primary)] hover:bg-[var(--color-accent)] text-white font-semibold px-5 py-2 rounded-full transition duration-300">
-                  Track This Habit
+              <div className="mt-6 text-center">
+                <button className="w-full py-2.5 bg-linear-to-r from-(--color-primary) to-(--color-accent) hover:opacity-90 text-white font-semibold rounded-full transition duration-300 shadow-sm">
+                  See Details
                 </button>
               </div>
             </div>
           </div>
         ))}
 
+        {/* No Data Message */}
         {data.length === 0 && (
           <p className="text-center text-gray-500 col-span-full">
-            No habits found.
+            No public habits found.
           </p>
         )}
       </div>

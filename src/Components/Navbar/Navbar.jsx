@@ -5,13 +5,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
+
   const handleLogout = () => {
     logOut()
-      .then(alert("Logout Successful"))
-      .catch((error) => {
-        alert(error.message);
-      });
+      .then(() => alert("Logout Successful"))
+      .catch((error) => alert(error.message));
   };
+
   return (
     <div className="navbar px-6 bg-lightBg shadow-sm border-b border-secondary/30">
       <div className="navbar-start flex items-center gap-2">
@@ -32,10 +32,9 @@ const Navbar = () => {
               />
             </svg>
           </div>
-
           <ul
             tabIndex={0}
-            className="menu menu-sm bg-accent dropdown-content rounded-box mt-3 z-1 w-52 p-2 shadow font-body text-textMain"
+            className="menu menu-sm bg-accent dropdown-content rounded-box mt-3 z-10 w-52 p-2 shadow font-body text-textMain"
           >
             <li>
               <NavLink to="/">Home</NavLink>
@@ -57,24 +56,33 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-2 font-body text-textMain">
           <li>
-            <NavLink to="/" className="hover:text-primary transition">
+            <NavLink
+              to="/"
+              className="hover:text-primary transition font-medium"
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/add-habit" className="hover:text-primary transition">
+            <NavLink
+              to="/add-habit"
+              className="hover:text-primary transition font-medium"
+            >
               Add Habit
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-habit" className="hover:text-primary transition">
+            <NavLink
+              to="/my-habit"
+              className="hover:text-primary transition font-medium"
+            >
               My Habits
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/public-habit"
-              className="hover:text-primary transition"
+              className="hover:text-primary transition font-medium"
             >
               Browse Public Habits
             </NavLink>
@@ -82,20 +90,49 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end flex items-center gap-3">
+      <div className="navbar-end flex items-center gap-3 relative">
         {user ? (
-          <button
-            onClick={() => {
-              handleLogout();
-            }}
-            className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
-          >
-            Log Out
-          </button>
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img
+                  src={
+                    user.photoURL ||
+                    "https://i.ibb.co/6tG5L2G/default-avatar.png"
+                  }
+                  alt="User Avatar"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-20 p-4 shadow bg-base-100 rounded-box w-60"
+            >
+              <li className="text-sm">
+                <span className="font-semibold text-textMain">
+                  {user.displayName || "Anonymous User"}
+                </span>
+              </li>
+              <li className="text-xs text-gray-500">{user.email}</li>
+              <div className="divider my-1"></div>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="text-left w-full py-2 px-3 rounded-full text-white font-semibold bg-linear-to-r from-primary to-accent hover:opacity-90 transition"
+                >
+                  Log Out
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
           <Link
             to="/auth/login"
-            className="py-2 px-5 rounded-full bg-linear-to-r from-primary to-accent text-white font-medium hover:opacity-90 transition"
+            className="py-2 px-6 rounded-full text-white font-semibold bg-linear-to-r from-primary to-accent hover:opacity-90 transition"
           >
             Sign In / Register
           </Link>

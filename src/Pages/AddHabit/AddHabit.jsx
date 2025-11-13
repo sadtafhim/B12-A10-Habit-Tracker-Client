@@ -33,32 +33,34 @@ const AddHabit = () => {
       });
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 py-10">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white/60 rounded-xl shadow-md border border-gray-200">
-        <h2 className="text-2xl font-bold text-center text-(--color-primary)">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 py-16">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md border border-gray-200">
+        <h2 className="text-3xl font-bold text-center text-(--color-primary)">
           Add a New Habit
         </h2>
         <p className="text-center text-gray-500">
-          Build consistency. One day at a time
+          Build consistency — one step at a time.
         </p>
 
-        <form className="space-y-4" onSubmit={addHabit}>
+        <form className="space-y-5" onSubmit={addHabit}>
           <div className="form-control">
             <label className="label text-(--color-primary)">Habit Title</label>
             <input
               type="text"
               name="habitName"
-              placeholder="Habit name..."
-              className="input input-bordered w-full p-3 text-(--color-primary)"
+              placeholder="e.g. Morning Run"
+              required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
             <label className="label text-(--color-primary)">Description</label>
             <textarea
-              placeholder="Describe the habit..."
               name="description"
-              className="input input-bordered w-full p-3 h-24 resize-none text-(--color-primary)"
+              placeholder="Describe your habit..."
+              required
+              className="input input-bordered w-full p-3 h-24 resize-none rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
@@ -66,7 +68,8 @@ const AddHabit = () => {
             <label className="label text-(--color-primary)">Category</label>
             <select
               name="category"
-              className="input input-bordered w-full text-(--color-primary)"
+              required
+              className="input input-bordered w-full rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             >
               <option>Morning</option>
               <option>Work</option>
@@ -83,7 +86,8 @@ const AddHabit = () => {
             <input
               type="time"
               name="time"
-              className="input input-bordered w-full p-3 text-(--color-primary)"
+              required
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
@@ -92,33 +96,34 @@ const AddHabit = () => {
             <input
               type="text"
               name="image"
-              className="input input-bordered w-full p-3 cursor-pointer bg-white text-(--color-primary)"
+              placeholder="Paste image URL..."
+              className="input input-bordered w-full p-3 rounded-md border-gray-300 focus:border-(--color-primary) focus:ring focus:ring-(--color-primary)/30 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
             <label className="label text-(--color-primary)">User Name</label>
             <input
-              value={user ? user.displayName : "name"}
+              value={user ? user.displayName : "Guest"}
               readOnly
               name="name"
-              className="input input-bordered w-full p-3 bg-gray-200 text-(--color-primary)"
+              className="input input-bordered w-full p-3 bg-gray-100 text-(--color-primary)"
             />
           </div>
 
           <div className="form-control">
             <label className="label text-(--color-primary)">Email</label>
             <input
-              value={user ? user.email : "email"}
+              value={user ? user.email : "guest@example.com"}
               readOnly
               name="email"
-              className="input input-bordered w-full p-3 bg-gray-200 text-(--color-primary)"
+              className="input input-bordered w-full p-3 bg-gray-100 text-(--color-primary)"
             />
           </div>
 
           <button
             type="submit"
-            className="btn btn-primary w-full py-2 text-white"
+            className="w-full py-3 mt-4 rounded-full text-white font-semibold bg-linear-to-r from-(--color-primary) to-(--color-accent) hover:opacity-90 transition-all duration-300 shadow-md"
           >
             Add Habit
           </button>

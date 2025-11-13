@@ -9,6 +9,7 @@ import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import PrivateRoute from "../Provider/PrivateRoute";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         <MainLayout></MainLayout>
       </div>
     ),
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -52,6 +54,7 @@ const router = createBrowserRouter([
         <AuthLayout></AuthLayout>
       </div>
     ),
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/auth/login",

@@ -17,13 +17,14 @@ const HabitDetails = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching habit:", err);
         setLoading(false);
       });
   }, [id]);
 
   const handleMarkComplete = () => {
-    fetch(`https://server-habit.vercel.app/habits/${id}/complete`, { method: "POST" })
+    fetch(`https://server-habit.vercel.app/habits/${id}/complete`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

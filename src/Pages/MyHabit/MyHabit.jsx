@@ -18,7 +18,6 @@ const MyHabit = () => {
           setLoading(false);
         })
         .catch((err) => {
-          console.error(err);
           setLoading(false);
         });
     }
@@ -35,7 +34,9 @@ const MyHabit = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://server-habit.vercel.app/habits/${id}`, { method: "DELETE" })
+        fetch(`https://server-habit.vercel.app/habits/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
@@ -48,7 +49,9 @@ const MyHabit = () => {
   };
 
   const handleMarkComplete = (id) => {
-    fetch(`https://server-habit.vercel.app/habits/${id}/complete`, { method: "POST" })
+    fetch(`https://server-habit.vercel.app/habits/${id}/complete`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -62,7 +65,7 @@ const MyHabit = () => {
           Swal.fire("Info", data.message || "Already completed today!", "info");
         }
       })
-      .catch((err) => console.error(err));
+      .catch();
   };
 
   if (loading) return <Loader />;

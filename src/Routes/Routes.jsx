@@ -10,8 +10,8 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import PrivateRoute from "../Provider/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
-import HabitDetails from "../HabitDetails/HabitDetails";
 import UpdateHabit from "../Pages/UpdateHabit/UpdateHabit";
+import HabitDetails from "../Pages/HabitDetails/HabitDetails";
 
 const router = createBrowserRouter([
   {

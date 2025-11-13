@@ -2,16 +2,43 @@ import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const RegisterPage = () => {
-  const { createUser, setUser, updateUser } = use(AuthContext);
+  const { createUser, setUser, updateUser, googleLoginHandle } =
+    use(AuthContext);
   const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const googleLogin = () => {
+    googleLoginHandle().then(() => {
+      navigate(from, { replace: true });
+    });
+  };
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const password = e.target.password.value;
     const photo = e.target.photoURL.value;
     const email = e.target.email.value;
+
+    if (name.length < 5) {
+      toast.error("Name should be at least 5 characters long");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters long");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -105,7 +132,12 @@ const RegisterPage = () => {
 
         <div className="text-center space-x-2">
           <span className="text-gray-600">OR</span>
-          <button className="btn btn-outline w-full py-2 mt-3">
+          <button
+            onClick={() => {
+              googleLogin();
+            }}
+            className="btn btn-outline w-full py-2 mt-3"
+          >
             <img
               className="w-5 h-5 mr-2"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
@@ -122,6 +154,7 @@ const RegisterPage = () => {
           <p className="text-(--color-accent)">Sign In</p>
         </Link>
       </div>
+      <Toaster />
     </div>
   );
 };

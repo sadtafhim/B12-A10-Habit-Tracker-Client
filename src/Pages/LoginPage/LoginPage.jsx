@@ -4,9 +4,17 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
-  const { user, setUser, signIn } = use(AuthContext);
-
+  const { user, setUser, signIn, googleLoginHandle } = use(AuthContext);
   const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const googleLogin = () => {
+    googleLoginHandle().then(() => {
+      navigate(from, { replace: true });
+    });
+  };
+
   const navigate = useNavigate();
   console.log(location);
 
@@ -84,7 +92,12 @@ const LoginPage = () => {
           <div className="grow h-px bg-gray-300"></div>
         </div>
 
-        <button className="w-full py-3 rounded-full border border-gray-300 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition-all">
+        <button
+          onClick={() => {
+            googleLogin();
+          }}
+          className="w-full py-3 rounded-full border border-gray-300 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition-all"
+        >
           <img
             className="w-5 h-5"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"

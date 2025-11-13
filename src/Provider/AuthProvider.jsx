@@ -4,13 +4,16 @@ export const AuthContext = createContext();
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
 
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -34,6 +37,19 @@ const AuthProvider = ({ children }) => {
   const updateUser = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData);
   };
+
+  // googleLogin
+  const googleLoginHandle = () => {
+    return signInWithPopup(auth, provider)
+      .then((result) => {
+        const user1 = result.user;
+        setUser(user1);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -53,6 +69,7 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     updateUser,
+    googleLoginHandle,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

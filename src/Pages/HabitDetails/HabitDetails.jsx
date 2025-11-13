@@ -34,7 +34,7 @@ const HabitDetails = () => {
           toast.error(data.message || "Already completed today!");
         }
       })
-      .catch((err) => console.error(err));
+      .catch();
   };
 
   if (loading) return <Loader />;

@@ -5,7 +5,6 @@ import Loader from "../../Components/Loader/Loader";
 
 const UpdateHabit = () => {
   const { id } = useParams();
-  console.log(id);
   const [habit, setHabit] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,10 +43,8 @@ const UpdateHabit = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 

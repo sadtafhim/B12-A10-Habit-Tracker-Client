@@ -20,7 +20,6 @@ const PublicHabit = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching habits:", err);
         setLoading(false);
       });
   }, []);

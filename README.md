@@ -1,16 +1,39 @@
-# React + Vite
+# 🕒 Habit Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and visually engaging **Habit Tracker App** built with **React**, **Vite**, and **Tailwind CSS**.  
+This app helps users build better habits, stay consistent, and visualize their daily progress in a sleek UI.
 
-Currently, two official plugins are available:
+--- livelink: https://habit-tracker-9e59c.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+✅ **User Authentication** — Sign up, log in, and manage your account with Firebase.  
+✅ **Track Habits** — Add, edit, delete, and monitor daily habits.  
+✅ **Progress Visualization** — Beautiful progress indicators and streaks.  
+✅ **Responsive UI** — Fully optimized for desktop and mobile devices.  
+✅ **Interactive Animations** — Smooth transitions powered by Framer Motion.  
+✅ **Notifications & Alerts** — Toasts and popups with React Hot Toast & SweetAlert2.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category           | Libraries / Tools                                   |
+| ------------------ | --------------------------------------------------- |
+| **Frontend**       | React 19, React Router 7, Vite                      |
+| **Styling**        | Tailwind CSS 4, DaisyUI, Emotion                    |
+| **Animations**     | Framer Motion, React Awesome Reveal, React Spinners |
+| **Icons**          | Lucide React, React Icons                           |
+| **Backend / Auth** | Firebase                                            |
+| **Notifications**  | SweetAlert2, React Hot Toast                        |
+
+---
+
+## 📦 Installation
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/habit-tracker.git
+cd habit-tracker
+```

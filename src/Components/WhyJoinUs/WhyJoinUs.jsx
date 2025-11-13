@@ -29,7 +29,6 @@ const features = [
   },
 ];
 
-// Animation Variants
 const cardVariants = {
   hidden: { opacity: 0, y: 60 },
   visible: (index) => ({

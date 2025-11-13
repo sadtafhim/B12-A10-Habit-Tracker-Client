@@ -7,7 +7,7 @@ const NewestHabits = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/latest-habits")
+    fetch("https://server-habit.vercel.app/latest-habits")
       .then((res) => res.json())
       .then((data2) => {
         setData(data2);

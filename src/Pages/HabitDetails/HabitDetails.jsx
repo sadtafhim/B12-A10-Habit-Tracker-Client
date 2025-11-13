@@ -10,7 +10,7 @@ const HabitDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/habits/${id}`)
+    fetch(`https://server-habit.vercel.app/habits/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setHabit(data.result);
@@ -23,7 +23,7 @@ const HabitDetails = () => {
   }, [id]);
 
   const handleMarkComplete = () => {
-    fetch(`http://localhost:5000/habits/${id}/complete`, { method: "POST" })
+    fetch(`https://server-habit.vercel.app/habits/${id}/complete`, { method: "POST" })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

@@ -18,7 +18,7 @@ const AddHabit = () => {
       createdAt: new Date(),
     };
 
-    fetch("http://localhost:5000/habits", {
+    fetch("https://server-habit.vercel.app/habits", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

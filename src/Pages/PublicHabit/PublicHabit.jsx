@@ -12,7 +12,7 @@ const PublicHabit = () => {
   const categories = ["All", "Morning", "Work", "Fitness", "Evening", "Study"];
 
   useEffect(() => {
-    fetch("http://localhost:5000/habits")
+    fetch("https://server-habit.vercel.app/habits")
       .then((res) => res.json())
       .then((data2) => {
         setData(data2);

@@ -10,7 +10,7 @@ const UpdateHabit = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/habits/${id}`)
+    fetch(`https://server-habit.vercel.app/habits/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setHabit(data.result);
@@ -35,7 +35,7 @@ const UpdateHabit = () => {
       creatorName: e.target.name.value,
     };
 
-    fetch(`http://localhost:5000/habits/${habit._id}`, {
+    fetch(`https://server-habit.vercel.app/habits/${habit._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

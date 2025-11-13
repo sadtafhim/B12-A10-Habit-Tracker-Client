@@ -26,7 +26,6 @@ const LoginPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 py-20">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md border border-gray-200">
-        {/* Header */}
         <h2 className="text-3xl font-bold text-center text-(--color-primary)">
           Welcome Back to HabitRise
         </h2>
@@ -34,7 +33,6 @@ const LoginPage = () => {
           Sign in to access your account and track your progress.
         </p>
 
-        {/* Form */}
         <form onSubmit={handleLogin} className="space-y-5">
           <div className="form-control">
             <label
@@ -70,23 +68,20 @@ const LoginPage = () => {
             />
           </div>
 
-          {/* Submit button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-full text-white font-semibold bg-gradient-to-r from-(--color-primary) to-(--color-accent) hover:opacity-90 transition-all duration-300 shadow-md"
+            className="w-full py-3 rounded-full text-white font-semibold bg-linear-to-r from-(--color-primary) to-(--color-accent) hover:opacity-90 transition-all duration-300 shadow-md"
           >
             Sign In
           </button>
         </form>
 
-        {/* Divider */}
         <div className="flex items-center gap-3 my-4">
-          <div className="flex-grow h-px bg-gray-300"></div>
+          <div className="grow h-px bg-gray-300"></div>
           <span className="text-gray-500 text-sm">OR</span>
-          <div className="flex-grow h-px bg-gray-300"></div>
+          <div className="grow h-px bg-gray-300"></div>
         </div>
 
-        {/* Google button */}
         <button className="w-full py-3 rounded-full border border-gray-300 flex items-center justify-center gap-2 bg-white hover:bg-gray-50 transition-all">
           <img
             className="w-5 h-5"
@@ -98,7 +93,6 @@ const LoginPage = () => {
           </span>
         </button>
 
-        {/* Register link */}
         <div className="text-center mt-4">
           <p className="text-sm text-gray-600">
             Don't have an account?{" "}

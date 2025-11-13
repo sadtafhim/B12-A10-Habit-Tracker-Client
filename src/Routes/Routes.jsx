@@ -10,6 +10,7 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import PrivateRoute from "../Provider/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
+import HabitDetails from "../HabitDetails/HabitDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyHabit></MyHabit>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/habit-details/:id",
+        element: (
+          <PrivateRoute>
+            <HabitDetails></HabitDetails>
           </PrivateRoute>
         ),
       },

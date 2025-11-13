@@ -38,8 +38,6 @@ const RegisterPage = () => {
         <p className="text-center text-gray-500">
           Sign up to access your account
         </p>
-
-        {/* Form layout */}
         <form onSubmit={handleRegistration} className="space-y-4">
           <div className="form-control">
             <label htmlFor="name" className="label text-(--color-primary)">
@@ -105,7 +103,6 @@ const RegisterPage = () => {
           </button>
         </form>
 
-        {/* Google sign up button */}
         <div className="text-center space-x-2">
           <span className="text-gray-600">OR</span>
           <button className="btn btn-outline w-full py-2 mt-3">
@@ -118,7 +115,6 @@ const RegisterPage = () => {
           </button>
         </div>
 
-        {/* Redirect to login */}
         <Link to="/auth/login" className="mt-4 block text-center">
           <span className="text-sm text-gray-500">
             Already have an account?

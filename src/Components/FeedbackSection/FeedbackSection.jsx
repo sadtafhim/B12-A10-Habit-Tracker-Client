@@ -11,17 +11,21 @@ const FeedbackSection = () => {
   };
 
   return (
-    <div className=" bg-gray-100">
+    <div className="bg-gray-100">
+      {/* Header */}
       <div className="w-full h-24 flex items-center justify-center shadow-sm bg-[#2F4C7A]">
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center">
           Your Words Matter
         </h1>
       </div>
-      <section className="flex items-center justify-center py-16 bg-gray-100 px-4">
-        <div className="w-full max-w-xl p-8 bg-white rounded-xl shadow-md border border-gray-200 space-y-6">
+
+      {/* Feedback Section */}
+      <section className="flex items-center justify-center py-16 px-4">
+        <div className="w-full max-w-4xl p-8 bg-white rounded-xl shadow-md border border-gray-200 space-y-6">
           <h2 className="text-2xl font-bold text-center text-(--color-primary)">
             Give Us Your Feedback
           </h2>
+
           <p className="text-center text-gray-500">
             We value your thoughts! Let us know how we can improve.
           </p>

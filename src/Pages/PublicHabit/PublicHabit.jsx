@@ -115,7 +115,7 @@ const PublicHabit = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch h-full">
           {filteredData.length > 0 ? (
             filteredData.map((habit) => (
               <div
@@ -138,7 +138,15 @@ const PublicHabit = () => {
                       <span className="font-medium text-(--color-primary)">
                         Category:
                       </span>{" "}
-                      {habit.category}
+                      {habit.category.length > 15
+                        ? habit.category.slice(0, 15) + "…"
+                        : habit.category}
+                    </p>
+                    <p>
+                      <span className="font-medium text-(--color-primary)">
+                        Description:
+                      </span>{" "}
+                      {habit.description}
                     </p>
                     <p>
                       <span className="font-medium text-(--color-primary)">

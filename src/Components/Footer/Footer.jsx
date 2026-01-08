@@ -2,7 +2,7 @@ import React from "react";
 import habitLogo from "../../assets/Habit-rise.png";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -38,12 +38,12 @@ const Footer = () => {
             <h3 className="font-heading text-primary font-semibold mb-3">
               Legal
             </h3>
-            <a href="#" className="block hover:text-primary transition text-sm">
+            <Link to="/terms&conditions" className="block hover:text-primary transition text-sm">
               Terms & Conditions
-            </a>
-            <a href="#" className="block hover:text-primary transition text-sm">
+            </Link>
+            <Link to="/privacy" className="block hover:text-primary transition text-sm">
               Privacy Policy
-            </a>
+            </Link>
           </div>
           <div>
             <h3 className="font-heading text-primary font-semibold mb-3">

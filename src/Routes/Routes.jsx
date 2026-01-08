@@ -12,36 +12,22 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
 import UpdateHabit from "../Pages/UpdateHabit/UpdateHabit";
 import HabitDetails from "../Pages/HabitDetails/HabitDetails";
+import About from "../Pages/About/About";
+import Dashboard from "../Components/Dashboard/Dashboard";
+import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
+import PrivacyPolicy from "../Pages/Priv/Priv";
+import UpdateUser from "../Pages/UpdateUser/UpdateUser";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <MainLayout></MainLayout>
-      </div>
-    ),
+    element: <MainLayout></MainLayout>,
     errorElement: <NotFound></NotFound>,
     children: [
       {
+        index: true,
         path: "/",
         element: <Home></Home>,
-      },
-      {
-        path: "/add-habit",
-        element: (
-          <PrivateRoute>
-            <AddHabit></AddHabit>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-habit",
-        element: (
-          <PrivateRoute>
-            <MyHabit></MyHabit>
-          </PrivateRoute>
-        ),
       },
       {
         path: "/habit-details/:id",
@@ -63,6 +49,18 @@ const router = createBrowserRouter([
         path: "/public-habit",
         element: <PublicHabit></PublicHabit>,
       },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/terms&conditions",
+        element: <TermsAndConditions></TermsAndConditions>,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy></PrivacyPolicy>
+      },
     ],
   },
   {
@@ -82,8 +80,39 @@ const router = createBrowserRouter([
         path: "/auth/register",
         element: <RegisterPage></RegisterPage>,
       },
+      {
+        path: "/auth/updateUser",
+        element: <UpdateUser></UpdateUser>,
+      },
     ],
   },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    errorElement: <NotFound></NotFound>,
+    children: [
+      {
+        path: "/dashboard/my-habit",
+        element: (
+          <PrivateRoute>
+            <MyHabit></MyHabit>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-habit",
+        element: (
+          <PrivateRoute>
+            <AddHabit></AddHabit>
+          </PrivateRoute>
+        ),
+      },
+    ]
+  }
 ]);
 
 export default router;

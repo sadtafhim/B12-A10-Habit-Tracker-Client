@@ -33,7 +33,7 @@ const NewestHabits = () => {
         </h1>
       </div>
       <div className="min-h-screen bg-gray-100 py-16 px-6 font-(--font-body)">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch h-full">
           {data.map((habit) => (
             <div
               key={habit._id}
@@ -58,6 +58,14 @@ const NewestHabits = () => {
                       Category:
                     </span>{" "}
                     {habit.category}
+                  </p>
+                  <p>
+                    <span className="font-medium text-(--color-primary)">
+                      Description:
+                    </span>{" "}
+                    {habit.description.length > 15
+                      ? habit.description.slice(0, 15) + "…"
+                      : habit.description}
                   </p>
                   <p>
                     <span className="font-medium text-(--color-primary)">

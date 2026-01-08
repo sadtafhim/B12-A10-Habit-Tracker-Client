@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-      .then(() => toast.success("Loged Out Successfully!"))
+      .then(() => toast.success("Logged Out Successfully!"))
       .catch((error) => toast.error(error.message));
   };
 
@@ -37,20 +37,15 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm bg-accent dropdown-content rounded-box mt-3 z-10 w-52 p-2 shadow font-body text-textMain"
           >
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/add-habit">Add Habit</NavLink>
-            </li>
-            <li>
-              <NavLink to="/my-habit">My Habits</NavLink>
-            </li>
-            <li>
-              <NavLink to="/public-habit">Browse Public Habits</NavLink>
-            </li>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/public-habit">Browse Public Habits</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            {user && (
+              <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            )}
           </ul>
         </div>
+
         <Link to="/">
           <img src={habitLogo} alt="HabitRise Logo" className="w-30" />
         </Link>
@@ -59,27 +54,8 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal gap-2 font-body text-textMain">
           <li>
-            <NavLink
-              to="/"
-              className="hover:text-primary transition font-medium"
-            >
+            <NavLink to="/" className="hover:text-primary transition font-medium">
               Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/add-habit"
-              className="hover:text-primary transition font-medium"
-            >
-              Add Habit
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/my-habit"
-              className="hover:text-primary transition font-medium"
-            >
-              My Habits
             </NavLink>
           </li>
           <li>
@@ -90,6 +66,34 @@ const Navbar = () => {
               Browse Public Habits
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/about"
+              className="hover:text-primary transition font-medium"
+            >
+              About
+            </NavLink>
+          </li>
+          {user && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className="hover:text-primary transition font-medium"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <NavLink
+                to="/auth/updateUser"
+                className="hover:text-primary transition font-medium"
+              >
+                Update User
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
 
